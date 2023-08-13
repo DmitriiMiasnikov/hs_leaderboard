@@ -1,14 +1,7 @@
+import { configColors } from "src/shared/config/colors";
+
 const theme = {
-  colors: {
-    black: '#1D1D1D',
-    blackLight: '#2D2D2D',
-    white: '#FFFFFF',
-    greenPrimary: '#63BC36',
-    description: '#ABABAB',
-    dark_60: '#615E5E',
-    warning: '#F04124',
-    transparent: 'transparent',
-  },
+  colors: configColors,
 
   headerHeight: '4.5rem',
   footerHeight: '5rem',
