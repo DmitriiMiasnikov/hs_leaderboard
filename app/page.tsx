@@ -1,19 +1,21 @@
 // Import your Client Component
 import HomePage from 'src/pages/home';
  
-const getPosts = async () => {
+const getUsers = async () => {
   // const res = await fetch('https://...')
   // const posts = await res.json()
-  const posts = [
-    { id: '1', name: 'post1' },
-    { id: '2', name: 'post2' }
+  const users = [
+    { name: 'user1', rank: 1, rating: 100 },
+    { name: 'user2', rank: 2, rating: 200 },
+    { name: 'user3', rank: 3, rating: 300 },
+    { name: 'user4', rank: 4, rating: 400 },
   ]
-  return posts
+  return users
 }
  
 export default async function Page() {
   // Fetch data directly in a Server Component
-  const posts = await getPosts()
+  const users = await getUsers()
   // Forward fetched data to your Client Component
-  return <HomePage posts={posts} />
+  return <HomePage users={users} />
 }

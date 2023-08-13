@@ -42,9 +42,7 @@ export const PageContent = styled.div(
 
 export const Content = styled.div(
   ({ theme: { headerHeight, contentWidth, footerHeight } }) => css`
-    min-height: calc(
-      100vh - ${headerHeight} - ${footerHeight} - 1rem
-    );
+    min-height: calc(100vh - ${headerHeight} - ${footerHeight} - 1rem);
     max-width: ${contentWidth};
     display: flex;
     flex-direction: column;

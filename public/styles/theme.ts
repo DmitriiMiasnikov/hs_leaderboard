@@ -32,7 +32,7 @@ const theme = {
     `@media (max-${vertical ? 'height' : 'width'}: ${breakpointMax}px) and (min-${
       vertical ? 'height' : 'width'
     }: ${breakpointMin + 0.02}px)`,
-};
+} as const;
 
 export type TTheme = typeof theme;
 export default theme;
