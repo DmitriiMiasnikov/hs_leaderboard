@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import StarAxis from 'public/images/icons/review-star.svg';
-
 export const Score = styled.div(
   ({ theme: { colors } }) => css`
     display: flex;
@@ -16,8 +14,6 @@ export const ScoreContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
-export const StarAxisIcon = styled(StarAxis)``;
 
 export const TooltipText = styled.div(
   ({ theme: { colors } }) => css`

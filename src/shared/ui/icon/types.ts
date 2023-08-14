@@ -1,4 +1,5 @@
-import { TMargin, ColorKeys } from 'src/shared/types';
+import { ColorKeys } from 'src/shared/config/colors';
+import { TMargin } from 'src/shared/types';
 import { IconKeys } from './config';
 
 export type TIconBase = TMargin & {

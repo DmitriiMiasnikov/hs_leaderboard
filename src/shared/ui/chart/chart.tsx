@@ -13,7 +13,7 @@ import { NameType } from 'recharts/types/component/DefaultTooltipContent';
 
 import theme from 'public/styles/theme';
 
-import { Score, ScoreContainer, StarAxisIcon, TooltipText } from './styled';
+import { Score, ScoreContainer, TooltipText } from './styled';
 import { TChartData, TCustomAxisTick, TNumber, TChart } from './types';
 import { Icon } from '../icon';
 import { CHART_COLORS } from './constants';
@@ -27,15 +27,7 @@ const Number = ({ count, x, y }: TNumber) => {
 };
 
 const CustomAxisTick = ({ x, y, payload }: TCustomAxisTick) => {
-  let path;
-  switch (payload.value) {
-    case 5:
-      path = <StarAxisIcon x={x - 38} y={y - 10} width={25} height={20} />;
-      break;
-    default:
-      path = <Number x={x - 22} y={y + 4} count={payload.value} />;
-  }
-  return path;
+  return <Number x={x - 22} y={y + 4} count={payload.value} />;
 };
 
 const CustomTooltip = ({ active, payload, label }: TooltipProps<number, NameType>) => {

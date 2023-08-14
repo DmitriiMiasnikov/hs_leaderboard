@@ -1,5 +1,5 @@
+import { configColors } from "src/shared/config/colors";
 import { css } from "styled-components";
-import { configColors } from "src/shared/types";
 import { TIconBase } from "./types";
 
 export const getSizeStyles = ({ $size }: TIconBase) => {

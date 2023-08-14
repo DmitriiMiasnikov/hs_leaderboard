@@ -5,6 +5,6 @@ const instance = axios.default.create({
 });
 
 export const getUsers = async () =>  {
-    const { data } = await instance.get("/api/users", { params: { server: 'EU' } });
+    const { data } = await instance.get("/api/users", { params: { server: 'eu' } });
     return data;
   }
