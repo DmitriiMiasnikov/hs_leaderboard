@@ -62,10 +62,7 @@ const Chart: FC<TChart> = ({ chart }) => {
       color: item.color,
     };
   });
-  console.log(range, [
-    range.min - (range.min % 500),
-    range.max - (range.max % 500) + 500,
-  ]);
+
   return (
     <ResponsiveContainer data-testid="reviews-chart">
       <LineChart data={data} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
