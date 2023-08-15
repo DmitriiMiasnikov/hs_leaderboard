@@ -11,6 +11,7 @@ const UsersList: FC<TUsersList> = ({
   selectedUsers,
   onSelectUser,
   onRemoveSelectedUser,
+  onRemoveAllSelected
 }) => {
   return (
     <UsersListWrapper>
@@ -37,6 +38,7 @@ const UsersList: FC<TUsersList> = ({
 
       <SelectedUsers
         onRemoveSelectedUser={onRemoveSelectedUser}
+        onRemoveAllSelected={onRemoveAllSelected}
         selectedUsers={selectedUsers}
       />
     </UsersListWrapper>

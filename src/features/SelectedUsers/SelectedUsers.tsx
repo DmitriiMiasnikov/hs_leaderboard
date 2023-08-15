@@ -1,14 +1,26 @@
 import React, { FC } from "react";
 
 import { TSelectedUsers } from "./types";
-import { SelectedUsersWrapper, SelectedUserItem, UserName } from "./styled";
+import {
+  SelectedUsersWrapper,
+  RemoveSelectButton,
+  SelectedUserItem,
+  UserName,
+} from "./styled";
+import { chartColors } from "src/shared/config/chartColors";
 
 const SelectedUsers: FC<TSelectedUsers> = ({
   selectedUsers,
   onRemoveSelectedUser,
+  onRemoveAllSelected
 }) => {
   return (
     <SelectedUsersWrapper>
+      {selectedUsers.length > 0 && (
+        <RemoveSelectButton onClick={onRemoveAllSelected}>
+          remove all ({selectedUsers.length} / {chartColors.length})
+        </RemoveSelectButton>
+      )}
       {selectedUsers.map((user) => {
         const { name, rank, rating } = user;
         return (

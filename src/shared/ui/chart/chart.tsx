@@ -23,7 +23,6 @@ const CustomTooltip = ({
   label,
 }: TooltipProps<number, NameType>) => {
   if (active && payload?.length) {
-    console.log(payload);
     return (
       <TooltipText>
           {payload.map(({ value: payloadValue, color, dataKey }, i) => {

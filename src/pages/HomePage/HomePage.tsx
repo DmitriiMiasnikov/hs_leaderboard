@@ -42,6 +42,11 @@ const HomePage = ({ users }: { users: TUser[] }) => {
     setChart((prev) => prev.filter((data) => data.rank !== rank));
   };
 
+  const onRemoveAllSelected = () => {
+    setSelectedUsers([]);
+    setChart([]);
+  };
+
   return (
     <DefaultLayout>
       <HomePageWrapper>
@@ -50,6 +55,7 @@ const HomePage = ({ users }: { users: TUser[] }) => {
           onSelectUser={onSelectUser}
           selectedUsers={selectedUsers}
           onRemoveSelectedUser={onRemoveSelectedUser}
+          onRemoveAllSelected={onRemoveAllSelected}
         />
         <ChartWrapper>
           <Chart

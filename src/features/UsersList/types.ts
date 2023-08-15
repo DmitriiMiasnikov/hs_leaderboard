@@ -5,4 +5,5 @@ export type TUsersList = {
   onSelectUser: (user: TUser) => void;
   selectedUsers: TUser[];
   onRemoveSelectedUser: (rank: number) => void;
+  onRemoveAllSelected: () => void;
 };

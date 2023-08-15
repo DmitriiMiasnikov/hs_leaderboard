@@ -5,6 +5,29 @@ export const SelectedUsersWrapper = styled.div`
   flex-direction: column;
 `;
 
+export const RemoveSelectButton = styled.div(
+  ({ theme: { colors } }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: ${colors.blue_400};
+
+    cursor: pointer;
+    transition: 0.1s opacity;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    height: 2.5rem;
+    padding: 0 2rem 0 1rem;
+    font-size: 1rem;
+
+    border-radius: 0.5rem 0.5rem 0 0;
+  `
+);
+
 export const SelectedUserItem = styled.div(
   ({ theme: { colors } }) => css`
     display: flex;
@@ -15,7 +38,6 @@ export const SelectedUserItem = styled.div(
     font-size: 1.25rem;
 
     background-color: ${colors.blue_300};
-    border-radius: 0.35rem;
 
     cursor: pointer;
     transition: 0.1s opacity;
@@ -26,6 +48,10 @@ export const SelectedUserItem = styled.div(
 
     &:not(:first-child) {
       border-top: 1px solid ${colors.grey_300};
+    }
+
+    &:last-child {
+      border-radius: 0 0 0.5rem 0.5rem;
     }
   `
 );
