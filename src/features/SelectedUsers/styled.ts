@@ -11,7 +11,7 @@ export const RemoveSelectButton = styled.div(
     align-items: center;
     justify-content: center;
 
-    background-color: ${colors.blue_400};
+    background-color: ${colors.grey_800}90;
 
     cursor: pointer;
     transition: 0.1s opacity;
@@ -28,8 +28,8 @@ export const RemoveSelectButton = styled.div(
   `
 );
 
-export const SelectedUserItem = styled.div(
-  ({ theme: { colors } }) => css`
+export const SelectedUserItem = styled.div<{ color: string }>(
+  ({ theme: { colors }, color }) => css`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,7 +37,7 @@ export const SelectedUserItem = styled.div(
     padding: 0 2rem 0 1rem;
     font-size: 1.25rem;
 
-    background-color: ${colors.blue_300};
+    background-color: ${color};
 
     cursor: pointer;
     transition: 0.1s opacity;

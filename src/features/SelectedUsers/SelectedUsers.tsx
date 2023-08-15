@@ -12,7 +12,7 @@ import { chartColors } from "src/shared/config/chartColors";
 const SelectedUsers: FC<TSelectedUsers> = ({
   selectedUsers,
   onRemoveSelectedUser,
-  onRemoveAllSelected
+  onRemoveAllSelected,
 }) => {
   return (
     <SelectedUsersWrapper>
@@ -22,11 +22,12 @@ const SelectedUsers: FC<TSelectedUsers> = ({
         </RemoveSelectButton>
       )}
       {selectedUsers.map((user) => {
-        const { name, rank, rating } = user;
+        const { name, rank, rating, index } = user;
         return (
           <SelectedUserItem
             key={rank}
             onClick={() => onRemoveSelectedUser(rank)}
+            color={chartColors[index]}
           >
             <UserName>
               <div>{rank}</div> {name}

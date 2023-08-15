@@ -1,7 +1,7 @@
-import { TUser } from "src/shared/types"
+import { TSelectedUser } from "src/shared/types"
 
 export type TSelectedUsers = {
-  selectedUsers: TUser[];
+  selectedUsers: TSelectedUser[];
   onRemoveSelectedUser: (rank: number) => void
   onRemoveAllSelected: () => void
 }

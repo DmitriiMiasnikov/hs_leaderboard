@@ -17,6 +17,7 @@ export const TooltipText = styled.div(
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    border-radius: 1rem;
 
     padding: 0.5rem;
 
@@ -27,3 +28,10 @@ export const TooltipText = styled.div(
     border: 1px solid ${colors.grey_500};
   `,
 );
+
+export const TooltipLabel = styled.div(
+  ({ theme: { colors } }) => css`
+  color: ${colors.black};
+  font-weight: bold;
+  font-size: 1rem;
+`)

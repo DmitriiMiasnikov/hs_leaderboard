@@ -5,6 +5,7 @@ import { TUsersList } from "./types";
 
 import { UsersListWrapper, ListWrapper, UserItem, UserName } from "./styled";
 import SelectedUsers from "../SelectedUsers";
+import { chartColors } from "src/shared/config/chartColors";
 
 const UsersList: FC<TUsersList> = ({
   users,
@@ -21,11 +22,13 @@ const UsersList: FC<TUsersList> = ({
           const isSelected = selectedUsers.some(
             (selected) => selected.rank === rank
           );
+          const isMaximumCharts = selectedUsers.length >= chartColors.length;
           return (
             <UserItem
               key={name}
-              onClick={() => !isSelected ? onSelectUser(user) : onRemoveSelectedUser(user.rank)}
+              onClick={() => !isSelected && !isMaximumCharts ? onSelectUser(user) : onRemoveSelectedUser(user.rank)}
               isSelected={isSelected}
+              isDisabled={isMaximumCharts && !isSelected}
             >
               <UserName>
                 <div>{rank}</div> {name}

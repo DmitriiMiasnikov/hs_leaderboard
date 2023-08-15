@@ -4,7 +4,7 @@ import { useState } from "react";
 import { UsersList } from "src/features/UsersList";
 import { getHistory } from "src/api";
 import { THistoryData } from "src/api/types";
-import { TUser } from "src/shared/types";
+import { TSelectedUser, TUser } from "src/shared/types";
 import Chart from "src/shared/ui/chart";
 import { DefaultLayout } from "src/widgets/DefaultLayout";
 
@@ -12,9 +12,7 @@ import { HomePageWrapper, ChartWrapper } from "./styled";
 import { chartColors } from "src/shared/config/chartColors";
 
 const HomePage = ({ users }: { users: TUser[] }) => {
-  const [selectedUsers, setSelectedUsers] = useState<
-    (TUser & { index: number })[]
-  >([]);
+  const [selectedUsers, setSelectedUsers] = useState<TSelectedUser[]>([]);
   const [chart, setChart] = useState<(THistoryData & { index: number })[]>([]);
 
   const onSelectUser = async (user: TUser) => {
