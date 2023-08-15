@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const SelectedUsersWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem 0.5rem;
+  gap: 2rem 1rem;
 `;
 
 export const SelectedUserItem = styled.div(

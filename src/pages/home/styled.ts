@@ -9,6 +9,7 @@ export const HomePageWrapper = styled.div(
 );
 
 export const ChartWrapper = styled.div`
+  margin: 2rem 0 0;
   width: 45rem;
-  height: 30rem;
-`
+  height: 40rem;
+`;

@@ -14,7 +14,7 @@ const SelectedUsers: FC<TSelectedUsers> = ({ selectedUsers, onRemoveSelectedUser
             <span>
               {rank}: {name} - {rating}
             </span>
-            <Icon name="close" $size={24} $color='white' $ml={12} />
+            <Icon name="close" $size={16} $color='white' $ml={12} />
           </SelectedUserItem>
         );
       })}

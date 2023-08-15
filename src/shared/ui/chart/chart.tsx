@@ -81,6 +81,7 @@ const Chart: FC<TChart> = ({ chart }) => {
           type="number"
           padding={{ top: 25 }}
           tick={CustomAxisTick}
+          domain={[Math.min(...chart.flat().map(({ rating }) => rating)) - 50, Math.max(...chart.flat().map(({ rating }) => rating)) + 50]}
         />
 
         <Tooltip content={CustomTooltip} />
