@@ -1,6 +1,6 @@
 // Import your Client Component
-import { getUsers } from 'src/features/users';
-import HomePage from 'src/pages/home';
+import { getUsers } from 'src/api';
+import { HomePage } from 'src/pages/HomePage';
  
 export default async function Page() {
   // Fetch data directly in a Server Component

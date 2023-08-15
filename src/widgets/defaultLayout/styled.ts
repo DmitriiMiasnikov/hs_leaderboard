@@ -21,6 +21,7 @@ export const Header = styled.header(
 export const Logo = styled.div(
   ({ theme: { colors } }) => css`
     display: flex;
+    align-items: center;
     padding: 0 2rem;
     gap: 0.75rem;
     color: ${colors.white};
@@ -29,21 +30,19 @@ export const Logo = styled.div(
 );
 
 export const PageContent = styled.div(
-  ({ theme: { headerHeight, contentWidth } }) => css`
+  ({ theme: { headerHeight } }) => css`
     margin: 0 auto;
     min-height: calc(100vh - ${headerHeight} - 1rem);
-    max-width: ${contentWidth};
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1rem 2rem 0;
+    padding: 1rem 0 0;
   `
 );
 
 export const Content = styled.div(
-  ({ theme: { headerHeight, contentWidth, footerHeight } }) => css`
+  ({ theme: { headerHeight, footerHeight } }) => css`
     min-height: calc(100vh - ${headerHeight} - ${footerHeight} - 1rem);
-    max-width: ${contentWidth};
     display: flex;
     flex-direction: column;
     justify-content: space-between;

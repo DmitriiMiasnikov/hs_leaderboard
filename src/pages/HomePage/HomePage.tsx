@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 import SelectedUsers from "src/features/SelectedUsers";
-import { UsersList } from "src/features/users";
-import { getHistory } from "src/features/users/api";
-import { THistoryData } from "src/features/users/api/types";
+import { UsersList } from "src/features/UsersList";
+import { getHistory } from "src/api";
+import { THistoryData } from "src/api/types";
 import { TUser } from "src/shared/types";
 import Chart from "src/shared/ui/chart";
-import { DefaultLayout } from "src/widgets/defaultLayout";
+import { DefaultLayout } from "src/widgets/DefaultLayout";
 
 import { HomePageWrapper, ChartWrapper } from "./styled";
 
-const Home = ({ users }: { users: TUser[] }) => {
+const HomePage = ({ users }: { users: TUser[] }) => {
   const [selectedUsers, setSelectedUsers] = useState<TUser[]>([]);
   const [chart, setChart] = useState<THistoryData>([]);
 
@@ -34,19 +34,18 @@ const Home = ({ users }: { users: TUser[] }) => {
   return (
     <DefaultLayout>
       <HomePageWrapper>
-        <UsersList users={users} onSelectUser={onSelectUser} />
-        <div>
-          <SelectedUsers
-            selectedUsers={selectedUsers}
-            onRemoveSelectedUser={onRemoveSelectedUser}
-          />
-          <ChartWrapper>
-            <Chart chart={chart.map((el) => el.rankChanges)} />
-          </ChartWrapper>
-        </div>
+        <UsersList
+          users={users}
+          onSelectUser={onSelectUser}
+          selectedUsers={selectedUsers}
+          onRemoveSelectedUser={onRemoveSelectedUser}
+        />
+        <ChartWrapper>
+          <Chart chart={chart.map((el) => el.rankChanges)} />
+        </ChartWrapper>
       </HomePageWrapper>
     </DefaultLayout>
   );
 };
 
-export default Home;
+export default HomePage;
