@@ -23,8 +23,8 @@ const UsersList: FC<TUsersList> = ({
           return (
             <UserItem
               key={name}
-              onClick={() => !isSelected && onSelectUser(user)}
-              isDisabled={isSelected}
+              onClick={() => !isSelected ? onSelectUser(user) : onRemoveSelectedUser(user.rank)}
+              isSelected={isSelected}
             >
               <UserName>
                 <div>{rank}</div> {name}

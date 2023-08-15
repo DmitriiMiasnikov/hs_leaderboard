@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import SelectedUsers from "src/features/SelectedUsers";
 import { UsersList } from "src/features/UsersList";
 import { getHistory } from "src/api";
 import { THistoryData } from "src/api/types";
@@ -10,10 +9,11 @@ import Chart from "src/shared/ui/chart";
 import { DefaultLayout } from "src/widgets/DefaultLayout";
 
 import { HomePageWrapper, ChartWrapper } from "./styled";
+import { chartColors } from "src/shared/config/chartColors";
 
 const HomePage = ({ users }: { users: TUser[] }) => {
   const [selectedUsers, setSelectedUsers] = useState<TUser[]>([]);
-  const [chart, setChart] = useState<THistoryData>([]);
+  const [chart, setChart] = useState<(THistoryData & { color: string })[]>([]);
 
   const onSelectUser = async (user: TUser) => {
     const newSelectedUsers = [...selectedUsers, user].sort(
@@ -23,7 +23,7 @@ const HomePage = ({ users }: { users: TUser[] }) => {
       ids: newSelectedUsers.map(({ rank }) => rank),
     });
     setSelectedUsers(newSelectedUsers);
-    setChart(history);
+    setChart(history.map((el, index) => ({ ...el, color: chartColors[index] })));
   };
 
   const onRemoveSelectedUser = (rank: number) => {
@@ -41,7 +41,7 @@ const HomePage = ({ users }: { users: TUser[] }) => {
           onRemoveSelectedUser={onRemoveSelectedUser}
         />
         <ChartWrapper>
-          <Chart chart={chart.map((el) => el.rankChanges)} />
+          <Chart chart={chart.map(({ rankChanges, color }) => ({ data: rankChanges, color }))} />
         </ChartWrapper>
       </HomePageWrapper>
     </DefaultLayout>

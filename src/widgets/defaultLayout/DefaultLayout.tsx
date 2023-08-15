@@ -27,7 +27,6 @@ const DefaultLayout = ({ children }: TDefaultLayout) => {
         <Content>{children}</Content>
         <Footer>
           <div>©DmitriiMiasnikov, 2023</div>
-          <div>Support</div>
         </Footer>
       </PageContent>
     </DefaultLayoutWrapper>

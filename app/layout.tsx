@@ -5,6 +5,9 @@ import Providers from "./providers";
 
 export const metadata = {
   title: "Base project next13 + nest",
+  icons: {
+    icon: 'images/logo.ico',
+  },
 };
 
 const RootLayout = ({ children }: { children: ReactNode }) => {

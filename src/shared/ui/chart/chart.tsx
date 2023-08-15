@@ -14,21 +14,8 @@ import { NameType } from "recharts/types/component/DefaultTooltipContent";
 import theme from "public/styles/theme";
 
 import { Score, ScoreContainer, TooltipText } from "./styled";
-import { TChartData, TCustomAxisTick, TNumber, TChart } from "./types";
+import { TChart } from "./types";
 import { Icon } from "../icon";
-import { CHART_COLORS } from "./constants";
-
-const Number = ({ count, x, y }: TNumber) => {
-  return (
-    <text id={count.toString()} x={x} y={y} fill="#A3A3A3" fontSize={13}>
-      {count}
-    </text>
-  );
-};
-
-const CustomAxisTick = ({ x, y, payload }: TCustomAxisTick) => {
-  return <Number x={x - 22} y={y + 4} count={payload.value} />;
-};
 
 const CustomTooltip = ({
   active,
@@ -63,19 +50,23 @@ const CustomTooltip = ({
 };
 
 const Chart: FC<TChart> = ({ chart }) => {
-  let data: TChartData[] = [];
+  let data: { string: number }[] = [];
+  let range = { min: 0, max: 0 };
 
   const config = chart.map((item, index) => {
     const dataKey = `rating_${index}`;
 
-    data = item.map((history, i) => ({
+    data = item.data.map((history, i) => {
+      if (history?.rating > range.max) range.max = history?.rating
+      if (history?.rating < range.min) range.min = history?.rating
+      return {
       ...data[i],
       [dataKey]: history?.rating ?? 0,
-    }));
+    }});
 
     return {
       dataKey,
-      color: CHART_COLORS[index],
+      color: item.color,
     };
   });
 
@@ -93,10 +84,10 @@ const Chart: FC<TChart> = ({ chart }) => {
           tickCount={6}
           type="number"
           padding={{ top: 25 }}
-          tick={CustomAxisTick}
+          tick={{stroke: 'white', strokeWidth: 0.5 }}
           domain={[
-            Math.min(...chart.flat().map(({ rating }) => rating)) - 50,
-            Math.max(...chart.flat().map(({ rating }) => rating)) + 50,
+            Math.min(...data.map(el => Object.values(el)).flat()) - 50,
+            Math.max(...data.map(el => Object.values(el)).flat()) + 50,
           ]}
         />
 

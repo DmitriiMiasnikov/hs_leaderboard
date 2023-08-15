@@ -27,17 +27,23 @@ export const ListWrapper = styled.div<{ selected: number }>(
   }
 `);
 
-export const UserItem = styled.div<{ isDisabled: boolean }>(
-  ({ theme: { colors }, isDisabled }) => css`
+export const UserItem = styled.div<{ isSelected: boolean}>(
+  ({ theme: { colors }, isSelected }) => css`
     padding: 0.35rem 0.5rem;
     display: flex;
     justify-content: space-between;
     font-size: 1.25rem;
-    cursor: ${isDisabled ? 'not-allowed' : 'pointer'};
-    color: ${isDisabled && colors.grey_600};
+    cursor: pointer;
+    transition: 0.2s opacity, 0.2s background-color;
+
+    background-color: ${isSelected && colors.grey_700};
 
     &:not(:first-child) {
       border-top: 1px solid ${colors.grey_800};
+    }
+
+    &:hover {
+      opacity: 0.8;
     }
   `
 );
