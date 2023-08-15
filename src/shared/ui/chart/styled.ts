@@ -1,24 +1,22 @@
 import styled, { css } from 'styled-components';
 
-export const Score = styled.div(
-  ({ theme: { colors } }) => css`
+export const Score = styled.div<{ color?: string }>(
+  ({ color }) => css`
     display: flex;
+    justify-content: space-between;
+    gap: 1rem;
 
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: bold;
-    color: ${colors.orange_500};
+    color: ${color};
   `,
 );
-
-export const ScoreContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 export const TooltipText = styled.div(
   ({ theme: { colors } }) => css`
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 0.25rem;
 
     padding: 0.5rem;
 

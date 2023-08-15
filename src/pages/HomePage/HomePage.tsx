@@ -12,18 +12,29 @@ import { HomePageWrapper, ChartWrapper } from "./styled";
 import { chartColors } from "src/shared/config/chartColors";
 
 const HomePage = ({ users }: { users: TUser[] }) => {
-  const [selectedUsers, setSelectedUsers] = useState<TUser[]>([]);
-  const [chart, setChart] = useState<(THistoryData & { color: string })[]>([]);
+  const [selectedUsers, setSelectedUsers] = useState<
+    (TUser & { index: number })[]
+  >([]);
+  const [chart, setChart] = useState<(THistoryData & { index: number })[]>([]);
 
   const onSelectUser = async (user: TUser) => {
-    const newSelectedUsers = [...selectedUsers, user].sort(
+    let index: number = 0;
+    for (let i = 0; i < chartColors.length; i++) {
+      if (selectedUsers.some((el) => el.index === i)) {
+        continue;
+      } else {
+        index = i;
+        break;
+      }
+    }
+    const newSelectedUsers = [...selectedUsers, { ...user, index }].sort(
       (a, b) => a.rank - b.rank
     );
     const history = await getHistory({
       ids: newSelectedUsers.map(({ rank }) => rank),
     });
     setSelectedUsers(newSelectedUsers);
-    setChart(history.map((el, index) => ({ ...el, color: chartColors[index] })));
+    setChart(history.map((el, index) => ({ ...el, index })));
   };
 
   const onRemoveSelectedUser = (rank: number) => {
@@ -41,7 +52,13 @@ const HomePage = ({ users }: { users: TUser[] }) => {
           onRemoveSelectedUser={onRemoveSelectedUser}
         />
         <ChartWrapper>
-          <Chart chart={chart.map(({ rankChanges, color }) => ({ data: rankChanges, color }))} />
+          <Chart
+            chart={chart.map(({ rankChanges, index, name, rank }) => ({
+              name: `${rank} - ${name}`,
+              data: rankChanges,
+              color: chartColors[index],
+            }))}
+          />
         </ChartWrapper>
       </HomePageWrapper>
     </DefaultLayout>

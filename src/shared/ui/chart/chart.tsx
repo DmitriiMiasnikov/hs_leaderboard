@@ -13,7 +13,7 @@ import { NameType } from "recharts/types/component/DefaultTooltipContent";
 
 import theme from "public/styles/theme";
 
-import { Score, ScoreContainer, TooltipText } from "./styled";
+import { Score, TooltipText } from "./styled";
 import { TChart } from "./types";
 import { Icon } from "../icon";
 
@@ -23,25 +23,17 @@ const CustomTooltip = ({
   label,
 }: TooltipProps<number, NameType>) => {
   if (active && payload?.length) {
+    console.log(payload);
     return (
       <TooltipText>
-        {label}:
-        <ScoreContainer>
-          {payload.map(({ value: payloadValue }, i) =>
-            payloadValue && payloadValue >= 0 ? (
-              <Score key={i}>
-                <Icon
-                  name="question"
-                  $size={16}
-                  $color="orange_500"
-                  $mr={6}
-                  $ml={6}
-                />
+          {payload.map(({ value: payloadValue, color, dataKey }, i) => {
+            return payloadValue && payloadValue >= 0 ? (
+              <Score key={i} color={color}>
+                <div>{dataKey}</div>
                 {payloadValue}
               </Score>
-            ) : null
-          )}
-        </ScoreContainer>
+            ) : null;
+          })}
       </TooltipText>
     );
   }
@@ -53,22 +45,26 @@ const Chart: FC<TChart> = ({ chart }) => {
   let data: { string: number }[] = [];
   let range = { min: 0, max: 0 };
 
-  const config = chart.map((item, index) => {
-    const dataKey = `rating_${index}`;
-
+  const config = chart.map((item) => {
     data = item.data.map((history, i) => {
-      if (history?.rating > range.max) range.max = history?.rating
-      if (history?.rating < range.min) range.min = history?.rating
+      if (history?.rating > range.max) range.max = history?.rating;
+      if (history?.rating < range.min) range.min = history?.rating;
       return {
-      ...data[i],
-      [dataKey]: history?.rating ?? 0,
-    }});
+        ...data[i],
+        [item.name]: history?.rating ?? 0,
+      };
+    });
 
     return {
-      dataKey,
+      dataKey: item.name,
       color: item.color,
     };
   });
+
+  range = {
+    min: Math.min(...data.map((el) => Object.values(el)).flat()),
+    max: Math.max(...data.map((el) => Object.values(el)).flat()),
+  };
 
   return (
     <ResponsiveContainer data-testid="reviews-chart">
@@ -84,10 +80,10 @@ const Chart: FC<TChart> = ({ chart }) => {
           tickCount={6}
           type="number"
           padding={{ top: 25 }}
-          tick={{stroke: 'white', strokeWidth: 0.5 }}
+          tick={{ stroke: "white", strokeWidth: 0.5 }}
           domain={[
-            Math.min(...data.map(el => Object.values(el)).flat()) - 50,
-            Math.max(...data.map(el => Object.values(el)).flat()) + 50,
+            range.min - (range.min % 100),
+            range.max - (range.max % 100) + 100,
           ]}
         />
 
