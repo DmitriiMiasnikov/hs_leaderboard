@@ -12,7 +12,7 @@ const UsersList: FC<TUsersList> = ({ users, onSelectUser }) => {
         const { name, rank, rating } = user;
         return (
           <UserItem key={name} onClick={() => onSelectUser(user)}>
-            {rank}: {name} - {rating}
+            <span>{rank}: {name}</span> <span>{rating}</span>
           </UserItem>
         );
       })}
