@@ -37,7 +37,8 @@ export const SelectedUserItem = styled.div<{ color: string }>(
     padding: 0 2rem 0 1rem;
     font-size: 1.25rem;
 
-    background-color: ${color};
+    background-color: ${colors.grey_900};
+    color: ${color};
 
     cursor: pointer;
     transition: 0.1s opacity;

@@ -15,9 +15,9 @@ export const getUsers = async () => {
   return data;
 };
 
-export const getHistory = async ({ ids }: { ids: number[] }) => {
+export const getHistory = async ({ ids, type }: { ids: number[], type: string }) => {
   const { data } = await instance.get<THistoryData[]>("/api/users/history", {
-    params: { ids: ids.join(","), type: 'hour' },
+    params: { ids: ids.join(","), type },
   });
   return data;
 };

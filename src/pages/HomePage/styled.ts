@@ -12,3 +12,7 @@ export const ChartWrapper = styled.div`
   width: calc(100vw - 22rem);
   height: 100%;
 `;
+
+export const RadioWrapper = styled.div`
+  padding: 1rem 4rem;
+`;

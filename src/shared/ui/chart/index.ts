@@ -1,1 +1,1 @@
-export { default } from './chart';
+export { default as Chart } from './Chart';
