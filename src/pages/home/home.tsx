@@ -7,7 +7,6 @@ import { getHistory } from "src/features/users/api";
 import { THistoryData } from "src/features/users/api/types";
 import { TUser } from "src/shared/types";
 import Chart from "src/shared/ui/chart";
-import { TChartData } from "src/shared/ui/chart/types";
 import { DefaultLayout } from "src/widgets/defaultLayout";
 
 import { HomePageWrapper, ChartWrapper } from "./styled";
@@ -17,15 +16,19 @@ const Home = ({ users }: { users: TUser[] }) => {
   const [chart, setChart] = useState<THistoryData>([]);
 
   const onSelectUser = async (user: TUser) => {
-    const newSelectedUsers = [...selectedUsers, user].sort((a, b) => a.rank - b.rank)
-    const history = await getHistory({ ids: newSelectedUsers.map(({ rank }) => rank) })
+    const newSelectedUsers = [...selectedUsers, user].sort(
+      (a, b) => a.rank - b.rank
+    );
+    const history = await getHistory({
+      ids: newSelectedUsers.map(({ rank }) => rank),
+    });
     setSelectedUsers(newSelectedUsers);
     setChart(history);
   };
 
   const onRemoveSelectedUser = (rank: number) => {
     setSelectedUsers((prev) => prev.filter((user) => user.rank !== rank));
-    setChart(prev => prev.filter(data => data.rank !== rank));
+    setChart((prev) => prev.filter((data) => data.rank !== rank));
   };
 
   return (
@@ -38,7 +41,7 @@ const Home = ({ users }: { users: TUser[] }) => {
             onRemoveSelectedUser={onRemoveSelectedUser}
           />
           <ChartWrapper>
-          <Chart chart={chart.map(el => el.rankChanges)} />
+            <Chart chart={chart.map((el) => el.rankChanges)} />
           </ChartWrapper>
         </div>
       </HomePageWrapper>
