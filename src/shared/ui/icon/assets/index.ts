@@ -5,6 +5,7 @@ import { ReactComponent as ArrowChevronTop } from "./arrow-chevron-top.svg";
 import { ReactComponent as Close } from "./close.svg";
 import { ReactComponent as Plus } from "./plus.svg";
 import { ReactComponent as Question } from "./question.svg";
+import { ReactComponent as Calendar } from "./calendar.svg";
 
 export {
   ArrowChevronBottom,
@@ -14,4 +15,5 @@ export {
   Close,
   Plus,
   Question,
+  Calendar
 };

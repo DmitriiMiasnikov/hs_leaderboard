@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import Link from 'next/link';
 
-import { Loader } from 'src/shared/ui';
+// import { Loader } from 'src/shared/ui/loader';
 
 import { TButton } from './types';
 import { StyledButton, SpinnerWrapper } from './styled';
@@ -73,4 +73,5 @@ const Button = forwardRef<HTMLButtonElement, TButtonType>(
     );
   },
 );
+
 export default Button;
