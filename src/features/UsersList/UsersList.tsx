@@ -1,21 +1,32 @@
 "use client";
 
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { TUsersList } from "./types";
 
 import { UsersListWrapper, ListWrapper, UserItem, UserName } from "./styled";
 import SelectedUsers from "../SelectedUsers";
 import { chartColors } from "src/shared/config/chartColors";
+import { Input } from "src/shared/ui/Input";
 
 const UsersList: FC<TUsersList> = ({
   users,
   selectedUsers,
   onSelectUser,
   onRemoveSelectedUser,
-  onRemoveAllSelected
+  onRemoveAllSelected,
+  onChangeUsersList,
 }) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const onChangeInputValue = (value: string) => {
+    setInputValue(value);
+    onChangeUsersList(value);
+  };
+
   return (
     <UsersListWrapper>
+      <Input value={inputValue} onChange={onChangeInputValue} placeholder='search by name' $mb={8} />
+
       <ListWrapper selected={selectedUsers.length}>
         {users.map((user) => {
           const { name, rank, rating } = user;
@@ -26,7 +37,11 @@ const UsersList: FC<TUsersList> = ({
           return (
             <UserItem
               key={name}
-              onClick={() => !isSelected && !isMaximumCharts ? onSelectUser(user) : onRemoveSelectedUser(user.rank)}
+              onClick={() =>
+                !isSelected && !isMaximumCharts
+                  ? onSelectUser(user)
+                  : onRemoveSelectedUser(user.rank)
+              }
               isSelected={isSelected}
               isDisabled={isMaximumCharts && !isSelected}
             >

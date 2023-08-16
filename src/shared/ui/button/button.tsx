@@ -64,11 +64,11 @@ const Button = forwardRef<HTMLButtonElement, TButtonType>(
         {iconType === 'only' ? icon : label}
         {iconType === 'trailing' && icon}
         {children}
-        {isLoading && (
+        {/* {isLoading && (
           <SpinnerWrapper backgroundColor={backgroundConfig[variant]}>
             <Loader variant="simple" size={sizeConfig[size].loaderSize} />
           </SpinnerWrapper>
-        )}
+        )} */}
       </StyledButton>
     );
   },

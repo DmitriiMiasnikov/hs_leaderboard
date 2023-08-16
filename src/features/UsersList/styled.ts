@@ -8,7 +8,7 @@ export const UsersListWrapper = styled.div`
 
 export const ListWrapper = styled.div<{ selected: number }>(
   ({ theme: { colors }, selected }) => css`
-    height: calc(100% - ${(selected + 1) * 2.5}rem);
+    height: calc(100% - ${(selected + 2.5) * 2.5}rem);
 
     display: flex;
     flex-direction: column;

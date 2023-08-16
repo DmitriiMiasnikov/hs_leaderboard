@@ -6,4 +6,5 @@ export type TUsersList = {
   selectedUsers: TSelectedUser[];
   onRemoveSelectedUser: (rank: number) => void;
   onRemoveAllSelected: () => void;
+  onChangeUsersList: (value: string) => void;
 };
