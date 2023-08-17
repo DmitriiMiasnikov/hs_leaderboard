@@ -16,9 +16,9 @@ export type TDatePickerInput = TMargin &
     placeholder?: string;
     checkboxLabel?: string | JSX.Element;
     disabled?: boolean;
-    currentDate?: TDate;
-    minDate?: NonNullable<ReactDatePickerProps['minDate']>;
-    maxDate?: NonNullable<ReactDatePickerProps['maxDate']>;
+    currentDate: TDate;
+    minDate?: ReactDatePickerProps['minDate'];
+    maxDate?: ReactDatePickerProps['maxDate'];
     onSubmit?: (date?: TDate) => void;
     clearable?: boolean;
     offset?: Config['offset'];

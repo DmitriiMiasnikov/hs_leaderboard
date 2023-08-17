@@ -22,7 +22,14 @@ export const ChartWrapper = styled.div`
 export const RadioWrapper = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const FiltersWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 
   height: 2.5rem;
   padding-left: 4.75rem;
-`;
+  margin: 0 0 1rem;
+`
